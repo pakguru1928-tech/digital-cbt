@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="id" data-motif="polos">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0B2266">
+  <meta name="robots" content="noindex">
+  <title>Ruang Ujian · Digital CBT</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icons/favicon-64.png" type="image/png">
+  <link rel="preload" href="./vendor/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="apple-touch-icon" href="./icons/apple-touch-180.png">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/ujian.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-eye-off" viewBox="0 0 24 24"><path d="m3 3 18 18M10.6 6.1A10 10 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-3 3.6M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7c1.7 0 3.2-.4 4.5-1.1M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.3-9.3M16 7l3 3M14 9l2 2"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-check-c" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+  <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+  <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+  <symbol id="i-chev-d" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></symbol>
+  <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="m2 2 20 20M8.5 16.4a5 5 0 0 1 7 0M5 12.9a10 10 0 0 1 5.2-2.7M19 12.9a10 10 0 0 0-2.3-1.6M12 20h.01"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8M21 3v5h-5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14zM20 17v4H6.5A2.5 2.5 0 0 1 4 18.5"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8 6 4-6 4z"/></symbol>
+  <symbol id="i-door" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v17h9M14 3l5 2v16l-5 1zM11 12h.01"/></symbol>
+</svg>
+
+<!-- ======================= Beranda siswa (setelah masuk di halaman utama) ======================= -->
+<main id="layar-beranda" class="layar beranda-siswa" hidden>
+  <header class="bs-atas">
+    <div class="bs-merek">
+      <span class="logo-ubin"><img src="./icons/logo-emblem.webp" alt="" width="34" height="22"></span>
+      <div><b>Digital CBT</b><small data-sekolah="nama">Sekolah</small></div>
+    </div>
+    <button type="button" class="btn btn-secondary btn-sm" id="btn-keluar-akun"><svg class="ic ic-sm"><use href="#i-logout"/></svg>Keluar</button>
+  </header>
+  <section class="bs-sapa">
+    <div class="bs-sapa-isi">
+      <div class="avatar" id="b-avatar">-</div>
+      <div>
+        <p class="bs-salam" id="b-salam">Selamat datang,</p>
+        <h1 id="b-nama">Nama Siswa</h1>
+        <div class="identitas-chip"><span class="chip" id="b-rombel">Kelas</span><span class="chip mono" id="b-nisn" hidden>NISN</span></div>
+      </div>
+    </div>
+    <p class="bs-tanggal"><svg class="ic ic-sm"><use href="#i-calendar"/></svg><span id="b-tanggal"></span></p>
+  </section>
+  <div class="bs-badan">
+    <section class="bs-bagian">
+      <div class="bs-bagian-kepala">
+        <h2><span class="bs-ikon"><svg class="ic"><use href="#i-clock"/></svg></span>Ujian hari ini</h2>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-perbarui"><svg class="ic ic-sm"><use href="#i-refresh"/></svg>Perbarui</button>
+      </div>
+      <div id="b-ujian" class="bs-daftar"></div>
+    </section>
+    <section class="bs-bagian">
+      <div class="bs-bagian-kepala"><h2><span class="bs-ikon emas"><svg class="ic"><use href="#i-star"/></svg></span>Nilai saya</h2></div>
+      <div id="b-nilai" class="bs-daftar"></div>
+    </section>
+    <p class="kaki-bantuan">Butuh bantuan? Angkat tangan dan panggil pengawas, atau hubungi wali kelas.</p>
+    <button type="button" class="btn btn-ghost btn-sm pasang" id="btn-pasang" hidden><svg class="ic ic-sm"><use href="#i-download"/></svg>Pasang aplikasi di perangkat ini</button>
+  </div>
+</main>
+
+<!-- ======================= W-02 KONFIRMASI & CEK PERANGKAT ======================= -->
+<main id="layar-konfirmasi" class="layar layar-konfirmasi" hidden>
+  <header class="konf-pita brand-bg">
+    <div class="konf-pita-isi">
+      <div>
+        <div class="merek-sub" data-sekolah="nama">Sekolah</div>
+        <h1>Periksa data sebelum mulai</h1>
+      </div>
+      <span class="chip chip-emas" data-sekolah="tahun">Tahun Pelajaran</span>
+    </div>
+  </header>
+  <section class="konf-kartu card">
+    <div class="identitas">
+      <div class="avatar" id="k-avatar">AP</div>
+      <div>
+        <h2 id="k-nama">Nama Siswa</h2>
+        <div class="identitas-chip"><span class="chip" id="k-rombel">Kelas</span><span class="chip mono" id="k-nisn">NISN</span></div>
+      </div>
+    </div>
+    <dl class="rincian">
+      <div><dt>Mata pelajaran</dt><dd id="k-mapel">-</dd></div>
+      <div><dt>Ujian</dt><dd id="k-ujian">-</dd></div>
+      <div><dt>Durasi</dt><dd id="k-durasi">-</dd></div>
+      <div><dt>Jumlah soal</dt><dd id="k-jumlah">-</dd></div>
+    </dl>
+    <button type="button" class="tautan-bahaya" id="btn-bukan-saya"><svg class="ic ic-sm"><use href="#i-logout"/></svg>Bukan data Anda? Keluar dan lapor ke pengawas</button>
+
+    <h3 class="subjudul">Cek Perangkat</h3>
+    <ul class="cek-daftar" id="cek-daftar">
+      <li data-cek="simpan"><span>Penyimpanan browser</span><span class="pill pill-idle"><span class="putar"></span>Memeriksa</span></li>
+      <li data-cek="browser"><span>Versi browser</span><span class="pill pill-idle"><span class="putar"></span>Memeriksa</span></li>
+      <li data-cek="koneksi"><span>Koneksi</span><span class="pill pill-idle"><span class="putar"></span>Memeriksa</span></li>
+      <li data-cek="paket"><span>Paket soal</span><span class="pill pill-idle"><span class="putar"></span>Mengunduh</span></li>
+    </ul>
+    <div class="alert alert-info konf-waktu"><svg class="ic"><use href="#i-clock"/></svg><span>Sisa waktu Anda <b id="k-sisa">-</b>. Waktu dihitung sejak Anda masuk.</span></div>
+    <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-mulai" disabled>Mulai Mengerjakan</button>
+  </section>
+</main>
+
+<!-- ======================= W-03 / W-04 RUANG UJIAN ======================= -->
+<div id="layar-ujian" class="layar layar-ujian" hidden>
+  <header class="u-kepala">
+    <div class="u-sekolah"><div class="logo-sekolah kecil" data-sekolah="logo">CBT</div><span data-sekolah="nama">Sekolah</span></div>
+    <div class="u-mapel" id="u-mapel">Mapel · Ujian</div>
+    <div class="u-kanan">
+      <span class="u-peserta" id="u-peserta">Nama <span class="mono muted">(username)</span></span>
+      <span class="u-simpan pill pill-ok" id="u-simpan" role="status" aria-live="polite"><svg class="ic"><use href="#i-check"/></svg><span>Tersimpan</span></span>
+      <span class="u-timer" id="u-timer" role="timer" aria-live="off"><span class="u-timer-label">Sisa waktu</span><svg class="ic ic-sm"><use href="#i-clock"/></svg><b class="mono" id="u-sisa">--:--:--</b></span>
+      <button type="button" class="btn btn-sm u-btn-daftar" id="btn-daftar"><svg class="ic ic-sm"><use href="#i-list"/></svg><span>Daftar Soal (<span id="u-posisi">1/1</span>)</span></button>
+    </div>
+  </header>
+
+  <div class="u-badan" id="u-badan">
+    <aside class="u-stimulus" id="u-stimulus" hidden>
+      <div class="stim-kepala">
+        <span class="pill pill-info" id="stim-label">Stimulus</span>
+        <button type="button" class="btn btn-ghost btn-sm stim-lipat" id="btn-lipat" aria-expanded="true"><svg class="ic ic-sm"><use href="#i-chev-d"/></svg><span>Lipat</span></button>
+      </div>
+      <h3 class="stim-judul" id="stim-judul"></h3>
+      <div class="stim-isi konten" id="stim-isi"></div>
+    </aside>
+
+    <section class="u-soal" id="u-soal" aria-live="polite">
+      <div class="soal-kepala">
+        <h2 class="soal-nomor" id="soal-nomor">Soal 1 dari 1</h2>
+        <span class="pill pill-info" id="soal-jenis">Pilihan Ganda</span>
+        <div class="ukuran" role="group" aria-label="Ukuran huruf">
+          <button type="button" data-ukuran="-1" aria-label="Perkecil huruf">A−</button>
+          <button type="button" data-ukuran="0" aria-label="Ukuran huruf bawaan" class="aktif">A</button>
+          <button type="button" data-ukuran="1" aria-label="Perbesar huruf">A+</button>
+        </div>
+      </div>
+      <div class="soal-isi konten" id="soal-isi"></div>
+      <div class="soal-jawab" id="soal-jawab"></div>
+      <nav class="soal-nav" aria-label="Navigasi soal">
+        <button type="button" class="btn btn-secondary" id="btn-sebelum"><svg class="ic ic-sm"><use href="#i-chev-l"/></svg>Sebelumnya</button>
+        <button type="button" class="btn btn-ragu" id="btn-ragu" aria-pressed="false"><span class="kotak-ragu"></span>Ragu-ragu</button>
+        <button type="button" class="btn btn-primary" id="btn-berikut">Berikutnya<svg class="ic ic-sm"><use href="#i-chev-r"/></svg></button>
+      </nav>
+    </section>
+
+    <aside class="u-panel" id="u-panel" aria-label="Daftar soal">
+      <div class="laci-pegangan" aria-hidden="true"></div>
+      <div class="panel-kepala">
+        <h2>Daftar Soal</h2>
+        <span class="chip" id="panel-total">0 butir</span>
+        <button type="button" class="input-aksi panel-tutup" id="btn-tutup-laci" aria-label="Tutup daftar soal"><svg class="ic"><use href="#i-x"/></svg></button>
+      </div>
+      <p class="panel-hitung"><b class="c-ok" id="h-jawab">Dijawab 0</b> · <b class="c-warn" id="h-ragu">Ragu 0</b> · <span id="h-kosong">Kosong 0</span></p>
+      <div class="kisi" id="kisi" role="list"></div>
+      <ul class="legenda">
+        <li><i class="lg lg-jawab"></i>Dijawab</li><li><i class="lg lg-ragu"></i>Ragu-ragu</li>
+        <li><i class="lg lg-kosong"></i>Kosong</li><li><i class="lg lg-aktif"></i>Sedang dibuka</li>
+      </ul>
+      <button type="button" class="btn btn-danger-outline btn-block" id="btn-selesai"><svg class="ic ic-sm"><use href="#i-logout"/></svg>Selesai Ujian</button>
+    </aside>
+  </div>
+  <div class="u-tirai" id="u-tirai" hidden></div>
+</div>
+
+<!-- ======================= W-07 PENGUMPULAN & KODE BUKTI ======================= -->
+<main id="layar-kumpul" class="layar layar-kumpul" hidden>
+  <header class="kumpul-kepala">
+    <div class="u-sekolah"><div class="logo-sekolah kecil" data-sekolah="logo">CBT</div><div><b data-sekolah="nama">Sekolah</b><small data-sekolah="kabupaten"></small></div></div>
+    <span class="chip">Ruang Ujian Digital CBT</span>
+  </header>
+  <section class="kumpul-kartu card" id="kumpul-kartu">
+    <div class="kumpul-ikon" id="kumpul-ikon"><svg class="ic ic-lg"><use href="#i-lock"/></svg></div>
+    <h1 id="kumpul-judul">Jawaban sudah dikunci</h1>
+    <p class="muted" id="kumpul-teks">Perangkat Anda sedang mengamankan rekaman jawaban.</p>
+
+    <div id="kumpul-proses">
+      <div class="kumpul-progres">
+        <p><span class="titik"></span>Jawaban Anda aman di perangkat ini, sedang dikirim…</p>
+        <div class="bar"><i id="kumpul-bar"></i></div>
+      </div>
+      <div class="kumpul-info" id="kumpul-info" hidden><b>Waktu habis.</b> Jawaban dikirim bergiliran agar server tidak penuh. Tunggu sebentar.</div>
+      <div class="kumpul-status"><span class="pill pill-info" id="kumpul-pill"><span class="putar"></span>Mengirim…</span></div>
+      <div class="alert alert-danger kumpul-jangan"><svg class="ic"><use href="#i-alert"/></svg><b>Jangan tutup halaman ini sampai kode bukti muncul.</b></div>
+    </div>
+
+    <div id="kumpul-hasil" hidden>
+      <p class="kode-label">Kode bukti pengumpulan</p>
+      <div class="kode-bukti mono" id="kode-bukti" aria-label="Kode bukti">------</div>
+      <p class="muted kecil" id="kumpul-waktu"></p>
+      <div class="alert alert-warn" id="kumpul-terlambat" hidden><svg class="ic"><use href="#i-alert"/></svg><span>Jawaban diterima setelah batas waktu. Tunjukkan kode ini kepada pengawas.</span></div>
+      <p class="kumpul-catatan">Tunjukkan kode ini kepada pengawas bila diminta. Kode yang sama juga tercatat di server sebagai bukti.</p>
+      <button type="button" class="btn btn-primary btn-block btn-lg" id="btn-keluar-selesai">Kembali ke beranda</button>
+    </div>
+  </section>
+  <p class="kumpul-kaki" id="kumpul-kaki"></p>
+</main>
+
+<!-- ======================= Layar diblokir (pindah perangkat / tiket tidak sah) ======================= -->
+<main id="layar-blokir" class="layar layar-kumpul" hidden>
+  <section class="kumpul-kartu card">
+    <div class="kumpul-ikon bahaya"><svg class="ic ic-lg"><use href="#i-alert"/></svg></div>
+    <h1 id="blokir-judul">Login dipindahkan</h1>
+    <p class="muted" id="blokir-teks">Login Anda sudah dipindahkan ke perangkat lain oleh pengawas.</p>
+    <button type="button" class="btn btn-secondary btn-block" id="btn-keluar-blokir"><svg class="ic ic-sm"><use href="#i-logout"/></svg>Keluar dari perangkat ini</button>
+  </section>
+</main>
+
+<!-- ======================= W-06 RINGKASAN & KONFIRMASI ======================= -->
+<div class="lapis" id="modal-ringkasan" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ringkas-judul">
+    <div class="modal-kepala ringkas-kepala">
+      <div><h2 id="ringkas-judul">Periksa Sebelum Mengumpulkan</h2><p class="muted">Pastikan seluruh soal sudah dicek kembali.</p></div>
+      <span class="pill pill-info"><svg class="ic"><use href="#i-clock"/></svg>Sisa waktu <b class="mono" id="ringkas-sisa">--:--</b></span>
+    </div>
+    <div class="modal-isi">
+      <div class="ringkas-angka">
+        <div class="ok"><b id="r-jawab">0</b><span>Dijawab</span></div>
+        <div class="warn"><b id="r-ragu">0</b><span>Ragu-ragu</span></div>
+        <div class="kosong"><b id="r-kosong">0</b><span>Belum dijawab</span></div>
+      </div>
+      <div class="ringkas-daftar" id="r-daftar-kosong"></div>
+      <div class="ringkas-daftar" id="r-daftar-ragu"></div>
+    </div>
+    <div class="modal-kaki">
+      <button type="button" class="btn btn-secondary" data-tutup>Kembali ke Soal</button>
+      <button type="button" class="btn btn-primary" id="btn-ke-konfirmasi">Kumpulkan Jawaban</button>
+    </div>
+  </div>
+</div>
+<div class="lapis" id="modal-konfirmasi" hidden>
+  <div class="modal modal-kecil" role="alertdialog" aria-modal="true" aria-labelledby="konf-judul">
+    <div class="modal-kepala konf-kepala">
+      <div class="ikon-bulat bahaya"><svg class="ic"><use href="#i-alert"/></svg></div>
+      <div><h2 id="konf-judul">Konfirmasi Pengumpulan</h2><p>Setelah dikumpulkan, jawaban tidak bisa diubah lagi.</p></div>
+    </div>
+    <div class="modal-isi">
+      <label class="centang"><input type="checkbox" id="cek-yakin"><span>Saya yakin ingin mengumpulkan jawaban</span></label>
+      <p class="konf-catatan" id="konf-catatan"></p>
+    </div>
+    <div class="modal-kaki">
+      <button type="button" class="btn btn-secondary" data-tutup>Batal</button>
+      <button type="button" class="btn btn-primary" id="btn-kumpulkan" disabled>Ya, Kumpulkan</button>
+    </div>
+  </div>
+</div>
+<div class="lapis lapis-gambar" id="modal-gambar" hidden>
+  <button type="button" class="btn btn-secondary gambar-tutup" data-tutup><svg class="ic"><use href="#i-x"/></svg>Tutup</button>
+  <img id="gambar-besar" alt="">
+</div>
+
+<div class="toast-wadah" id="toast" aria-live="assertive"></div>
+
+<!-- Token ruang: diminta saat menekan Mulai ujian -->
+<div class="lapis" id="modal-token" hidden>
+  <div class="modal modal-token" role="dialog" aria-modal="true" aria-labelledby="mt-judul">
+    <div class="modal-kepala">
+      <span class="token-ikon"><svg class="ic"><use href="#i-key"/></svg></span>
+      <h2 id="mt-judul">Masukkan token ruang</h2>
+      <p class="muted" id="mt-info">Token terdiri atas 6 huruf/angka dan dibacakan oleh pengawas.</p>
+    </div>
+    <form class="modal-isi" id="form-token" novalidate autocomplete="off">
+      <div class="token-kotak" role="group" aria-label="Token ruang">
+        <input class="token-sel" maxlength="1" inputmode="text" autocapitalize="characters" aria-label="Token huruf 1">
+        <input class="token-sel" maxlength="1" inputmode="text" autocapitalize="characters" aria-label="Token huruf 2">
+        <input class="token-sel" maxlength="1" inputmode="text" autocapitalize="characters" aria-label="Token huruf 3">
+        <input class="token-sel" maxlength="1" inputmode="text" autocapitalize="characters" aria-label="Token huruf 4">
+        <input class="token-sel" maxlength="1" inputmode="text" autocapitalize="characters" aria-label="Token huruf 5">
+        <input class="token-sel" maxlength="1" inputmode="text" autocapitalize="characters" aria-label="Token huruf 6">
+      </div>
+      <div id="masuk-galat" class="alert alert-danger" role="alert" hidden><svg class="ic"><use href="#i-alert"/></svg><span></span></div>
+      <button type="submit" hidden></button>
+    </form>
+    <div class="modal-kaki">
+      <button type="button" class="btn btn-secondary" data-tutup>Batal</button>
+      <button type="button" class="btn btn-primary" id="btn-masuk">Masuk ke ujian<svg class="ic ic-sm"><use href="#i-chev-r"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script src="./js/config.js"></script>
+<script src="./js/api.js"></script>
+<script src="./js/ujian.js"></script>
+</body>
+</html>

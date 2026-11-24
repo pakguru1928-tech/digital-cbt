@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#1E3A8A">
+  <title>Verifikasi Impor Soal · Digital CBT</title>
+  <link rel="icon" href="./icons/favicon-64.png" type="image/png">
+  <link rel="stylesheet" href="./css/base.css">
+  <style>
+    body { background: var(--bg); }
+    .vk-atas { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.95); backdrop-filter: blur(6px); border-bottom: 1px solid var(--border); }
+    .vk-atas-isi { max-width: 1080px; margin: 0 auto; padding: 12px 20px; display: flex; align-items: center; gap: 14px; }
+    .vk-atas .logo-sekolah { background: var(--primary); color: #fff; }
+    .vk-atas b { display: block; color: var(--primary); font-size: 16px; }
+    .vk-atas small { color: var(--muted); font-size: 13px; }
+    .vk-atas .btn { margin-left: auto; }
+    main { max-width: 1080px; margin: 0 auto; padding: 24px 20px 120px; display: grid; gap: 20px; }
+    .vk-judul h1 { font-size: 26px; letter-spacing: -.01em; }
+    .vk-judul p { color: var(--muted); margin: 6px 0 0; max-width: 760px; }
+    .card { padding: 20px; }
+    .card > h2 { font-size: 18px; margin-bottom: 4px; }
+    .card > .muted { margin: 0 0 14px; font-size: 14px; }
+    .cek-daftar { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+    .cek-daftar li { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 10px; align-items: start; padding: 10px 12px; border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--surface); font-size: 14px; }
+    .cek-daftar li small { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+    .titik { width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; background: var(--border-strong); }
+    .titik.ok { background: var(--ok); } .titik.warn { background: #D97706; } .titik.danger { background: var(--danger); } .titik.idle { background: var(--border-strong); }
+    .titik.putar { border: 2px solid var(--primary); border-right-color: transparent; background: transparent; animation: vkputar .8s linear infinite; }
+    @keyframes vkputar { to { transform: rotate(360deg); } }
+    .zona { display: grid; place-items: center; text-align: center; gap: 10px; padding: 32px 18px; border: 2px dashed var(--border-strong); border-radius: var(--r-xl); background: var(--surface); cursor: pointer; transition: border-color .15s, background .15s; }
+    .zona:hover, .zona.seret { border-color: var(--primary); background: var(--primary-tint); }
+    .zona b { font-size: 17px; }
+    .zona small { color: var(--muted); }
+    .zona svg { color: var(--primary); }
+    .berkas { border: 1px solid var(--border); border-radius: var(--r-xl); background: var(--surface); overflow: hidden; }
+    .berkas + .berkas { margin-top: 14px; }
+    .berkas-kepala { display: flex; align-items: center; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .berkas-kepala h3 { font-size: 16px; word-break: break-word; }
+    .berkas-kepala .muted { font-size: 13px; }
+    .berkas-kepala .kanan { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+    .berkas-isi { padding: 16px 18px; display: grid; gap: 14px; }
+    .statistik { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+    .stat { padding: 10px 12px; border-radius: var(--r-lg); background: var(--surface-2); }
+    .stat b { display: block; font-size: 20px; font-variant-numeric: tabular-nums; }
+    .stat span { font-size: 12.5px; color: var(--muted); }
+    .stat.buruk { background: var(--danger-tint); } .stat.buruk b { color: var(--danger); }
+    .stat.awas { background: var(--warn-tint); } .stat.awas b { color: var(--warn); }
+    .gerbang { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .gerbang th, .gerbang td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .gerbang th { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; }
+    .gerbang td small { display: block; color: var(--muted); font-size: 12.5px; }
+    .pilih { display: inline-flex; border: 1px solid var(--border-strong); border-radius: var(--r-lg); overflow: hidden; }
+    .pilih label { position: relative; }
+    .pilih input { position: absolute; opacity: 0; inset: 0; }
+    .pilih span { display: block; padding: 6px 11px; font-size: 13px; font-weight: 600; cursor: pointer; border-left: 1px solid var(--border); background: #fff; white-space: nowrap; }
+    .pilih label:first-child span { border-left: 0; }
+    .pilih input:focus-visible + span { outline: 2px solid var(--ring); outline-offset: -2px; }
+    .pilih input:checked + span.ya { background: var(--ok); color: #fff; }
+    .pilih input:checked + span.tidak { background: var(--danger); color: #fff; }
+    .pilih input:checked + span.na { background: var(--idle); color: #fff; }
+    .catatan { width: 100%; min-height: 40px; padding: 8px 10px; border: 1px solid var(--border-strong); border-radius: var(--r-lg); font-size: 14px; resize: vertical; }
+    .ringkas-soal { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ringkas-soal a { text-decoration: none; }
+    details.pratinjau > summary { cursor: pointer; font-weight: 700; color: var(--primary); padding: 6px 0; list-style: none; }
+    details.pratinjau > summary::-webkit-details-marker { display: none; }
+    details.pratinjau > summary::before { content: "▸ "; }
+    details.pratinjau[open] > summary::before { content: "▾ "; }
+    .soal-pv { border: 1px solid var(--border); border-radius: var(--r-lg); padding: 14px 16px; background: #fff; margin-top: 10px; scroll-margin-top: 80px; }
+    .soal-pv.bermasalah { border-color: var(--warn-border); box-shadow: inset 3px 0 0 #D97706; }
+    .soal-pv header { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; font-size: 13px; color: var(--muted); }
+    .soal-pv header b { color: var(--text); font-size: 15px; }
+    .isi-soal { font-size: 16px; line-height: 1.6; overflow-x: auto; }
+    .isi-soal p { margin: 0 0 .6em; }
+    .isi-soal img { height: auto; max-width: 100%; border-radius: 4px; }
+    .isi-soal table { border-collapse: collapse; margin: 8px 0; }
+    .isi-soal td, .isi-soal th { border: 1px solid var(--border-strong); padding: 4px 8px; }
+    .stimulus-pv { background: var(--surface-2); border-radius: var(--r-lg); padding: 12px 14px; margin-bottom: 10px; font-size: 15px; }
+    .stimulus-pv > small { display: block; font-weight: 700; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+    .opsi-pv { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+    .opsi-pv li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 10px; border: 1px solid var(--border); border-radius: var(--r-lg); }
+    .opsi-pv li > b { width: 26px; height: 26px; flex: none; border-radius: 50%; border: 1.5px solid var(--border-strong); display: grid; place-items: center; font-size: 13px; }
+    .opsi-pv li.kunci { border-color: var(--ok-border); background: var(--ok-tint); }
+    .opsi-pv li.kunci > b { background: var(--ok); border-color: var(--ok); color: #fff; }
+    .opsi-pv li > div { min-width: 0; flex: 1; }
+    .item-pv { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 15px; }
+    .item-pv td { border-top: 1px solid var(--border); padding: 7px 6px; vertical-align: top; }
+    .item-pv td:first-child { width: 36px; color: var(--muted); font-weight: 700; }
+    .item-pv td.k { width: 70px; text-align: right; }
+    .kunci-pv { margin-top: 10px; font-size: 14px; }
+    .kunci-pv code { background: var(--surface-2); padding: 1px 6px; border-radius: 4px; }
+    .masalah-pv { margin: 10px 0 0; padding-left: 18px; font-size: 13.5px; color: #92400E; }
+    .info-pv { margin: 6px 0 0; padding-left: 18px; font-size: 13px; color: var(--muted); }
+    .objek-lama, .rumus-gagal { display: inline-block; padding: 1px 6px; border-radius: 4px; background: var(--danger-tint); color: var(--danger); font-size: 13px; font-weight: 600; }
+    .bar-bawah { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: #fff; border-top: 1px solid var(--border); box-shadow: 0 -6px 18px rgba(15,23,42,.06); }
+    .bar-bawah-isi { max-width: 1080px; margin: 0 auto; padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .bar-bawah-isi .teks { font-size: 14px; color: var(--muted); }
+    .bar-bawah-isi .teks b { color: var(--text); }
+    .bar-bawah-isi .btn:first-of-type { margin-left: auto; }
+    .halaman-pdf { max-width: 100%; border: 1px solid var(--border); border-radius: 6px; }
+    .toast-wadah { bottom: 84px; }
+    @media (max-width: 640px) {
+      main { padding: 18px 14px 140px; }
+      .vk-judul h1 { font-size: 22px; }
+      .gerbang thead { display: none; }
+      .gerbang tr { display: grid; grid-template-columns: 1fr; padding: 8px 0; border-bottom: 1px solid var(--border); }
+      .gerbang td { border: 0; padding: 4px 0; }
+      .bar-bawah-isi .btn { flex: 1; }
+      .bar-bawah-isi .teks { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="vk-atas">
+    <div class="vk-atas-isi">
+      <span class="logo-sekolah" aria-hidden="true">CBT</span>
+      <div><b>Digital CBT</b><small>Verifikasi impor soal · Tahap 1</small></div>
+      <a class="btn btn-secondary btn-sm" href="./index.html">Ke panel staf</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="vk-judul">
+      <h1>Uji baca file soal</h1>
+      <p>Pilih file soal Word (.docx) atau PDF. Bandingkan pratinjau dengan file aslinya, lalu isi kolom "Sesuai?" per butir. File diproses di perangkat ini dan tidak dikirim ke server mana pun.</p>
+    </section>
+
+    <section class="card" aria-labelledby="judul-cek">
+      <h2 id="judul-cek">1. Cek perangkat &amp; server</h2>
+      <p class="muted">Jalankan di HP siswa dan laptop guru. Untuk menguji akses "Anyone", buka halaman ini di HP yang tidak masuk akun Google atau di jendela Samaran.</p>
+      <ul class="cek-daftar" id="cek-daftar"></ul>
+      <div style="margin-top:12px"><button class="btn btn-secondary btn-sm" id="btn-cek" type="button">Jalankan ulang cek</button></div>
+    </section>
+
+    <section class="card" aria-labelledby="judul-file">
+      <h2 id="judul-file">2. File soal</h2>
+      <p class="muted">Gerbang Tahap 1 (PRD 9.2): teks, gambar, pangkat, dan rumus terbaca benar pada 10 file soal nyata. Bila rumus gagal, soal itu memakai Potong soal.</p>
+      <label class="zona" id="zona">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 11v6"/><path d="m9 14 3-3 3 3"/></svg>
+        <b>Pilih atau seret file ke sini</b>
+        <small>.docx atau .pdf · boleh banyak sekaligus</small>
+        <input type="file" id="input-file" accept=".docx,.pdf,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple hidden>
+      </label>
+      <div id="daftar-berkas" style="margin-top:16px"></div>
+    </section>
+  </main>
+
+  <div class="bar-bawah">
+    <div class="bar-bawah-isi">
+      <span class="teks" id="ringkasan-bawah">Belum ada file.</span>
+      <button class="btn btn-secondary btn-sm" id="btn-unduh" type="button" disabled>Unduh laporan</button>
+      <button class="btn btn-primary btn-sm" id="btn-salin" type="button" disabled>Salin laporan</button>
+    </div>
+  </div>
+
+  <div class="toast-wadah" id="toast-wadah" aria-live="polite"></div>
+
+  <script src="./js/config.js"></script>
+  <script src="./js/api.js"></script>
+  <script src="./js/impor.js"></script>
+  <script src="./js/verifikasi.js"></script>
+</body>
+</html>

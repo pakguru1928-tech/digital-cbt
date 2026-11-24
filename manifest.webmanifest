@@ -1,0 +1,18 @@
+{
+  "id": "./index.html",
+  "name": "Digital CBT · Ujian Online",
+  "short_name": "Digital CBT",
+  "description": "Aplikasi ujian berbasis komputer sekolah untuk siswa, guru, pengawas, dan operator.",
+  "lang": "id",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0B2266",
+  "theme_color": "#0B2266",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
